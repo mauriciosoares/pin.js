@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+
+  <style>
+    #container {
+      height: 3000px;
+      position: relative;
+    }
+
+    #footer {
+      height: 500px;
+      background-color: red;
+    }
+
+    #nail {
+      height: 400px;
+      width: 200px;
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="nail"></div>
+  </div>
+  <div id="footer"></div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="nail.js"></script>
+
+  <script>
+    new Nail('#nail');
+  </script>
+</body>
+</html>
