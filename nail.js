@@ -1,6 +1,8 @@
 function Nail(container) {
 	this.$el = $(container);
+	this.$ell = $(container)[0];
 	this.$parent = this.$el.parent();
+	this.$parentt = this.$ell.parentNode;
 	this.$window = $(window);
 
 	this.init();
@@ -17,10 +19,25 @@ Nail.prototype.init = function() {
 
 Nail.prototype.calcPositions = function() {
 	this.positions = {
-		offset: this.$el.offset(),
-		parentOffset: this.$el.position(),
-		stopTop: (this.$parent.innerHeight() + this.$parent.offset().top) - this.$el.height()
+		offset: this.getOffset(this.$ell),
+		parentOffset: this.getParentOffset(),
+		// stopTop: (this.$parent.innerHeight() + this.$parent.offset().top) - this.$el.height(),
+		stopTop: (this.$parentt.offsetHeight + this.getOffset(this.$parentt).top) - this.$ell.offsetHeight
 	};
+};
+
+Nail.prototype.getOffset = function(element) {
+	var de = document.documentElement;
+	var box = element.getBoundingClientRect();
+	var top = box.top + window.pageYOffset - de.clientTop;
+	var left = box.left + window.pageXOffset - de.clientLeft;
+	return { top: top, left: left };
+};
+
+Nail.prototype.getParentOffset = function() {
+	return {
+		left: this.$ell.offsetLeft
+	}
 };
 
 Nail.prototype.bind = function() {
