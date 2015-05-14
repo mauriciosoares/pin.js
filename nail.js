@@ -2,7 +2,6 @@ function Nail(container) {
 	this.$el = $(container);
 	this.$ell = $(container)[0];
 	this.$parentt = this.$ell.parentNode;
-	this.$window = $(window);
 
 	this.init();
 }
@@ -68,8 +67,7 @@ Nail.prototype.onWindowScroll = function() {
 	// if the window got to the bottom of the parent element
 	// of the container element, it stops the element
 	if(this.touchBottom()) return;
-
-	newTop = this.$window.scrollTop() - this.positions.offset.top;
+	newTop = window.scrollY - this.positions.offset.top;
 
 	// some checks to stop unecessary code repetition
 	if(newTop > 0 && this.$el.css('position') === 'fixed') return;
@@ -89,7 +87,7 @@ Nail.prototype.onWindowScroll = function() {
 
 Nail.prototype.touchBottom = function() {
 	// if the scroll passed the end of the parent
-	if(this.$window.scrollTop() > this.positions.stopTop) {
+	if(window.scrollY > this.positions.stopTop) {
 		this.setCss({
 			top: '',
 			marginLeft: '',
@@ -114,5 +112,5 @@ Nail.prototype.setCss = function(properties) {
 
 
 Nail.prototype.windowIsSmaller = function() {
-	return this.$window.innerHeight() < this.$el.height();
+	return window.innerHeight < this.$ell.offsetHeight;
 };
