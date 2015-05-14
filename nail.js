@@ -29,7 +29,10 @@ Nail.prototype.getOffset = function(element) {
 	var box = element.getBoundingClientRect();
 	var top = box.top + window.pageYOffset - de.clientTop;
 	var left = box.left + window.pageXOffset - de.clientLeft;
-	return { top: top, left: left };
+
+	return {
+		top: top, left: left
+	};
 };
 
 Nail.prototype.getParentOffset = function() {
@@ -39,8 +42,8 @@ Nail.prototype.getParentOffset = function() {
 };
 
 Nail.prototype.bind = function() {
-	this.$window.on('scroll', $.proxy(this.onWindowScroll, this));
-	this.$window.on('resize', $.proxy(this.reload, this));
+	window.onscroll = this.onWindowScroll.bind(this);
+	window.onresize = this.reload.bind(this);
 };
 
 Nail.prototype.reload = function() {
@@ -79,7 +82,8 @@ Nail.prototype.onWindowScroll = function() {
 		left: (newTop > 0 ? this.positions.offset.left : ''),
 		top: (newTop > 0 ? 0 : ''),
 		marginLeft: (newTop > 0 ? 0 : ''),
-		marginTop: (newTop > 0 ? 0 : '')
+		marginTop: (newTop > 0 ? 0 : ''),
+		bottom: ''
 	});
 };
 
