@@ -1,7 +1,6 @@
 function Nail(container) {
 	this.$el = $(container);
 	this.$ell = $(container)[0];
-	this.$parent = this.$el.parent();
 	this.$parentt = this.$ell.parentNode;
 	this.$window = $(window);
 
@@ -21,7 +20,6 @@ Nail.prototype.calcPositions = function() {
 	this.positions = {
 		offset: this.getOffset(this.$ell),
 		parentOffset: this.getParentOffset(),
-		// stopTop: (this.$parent.innerHeight() + this.$parent.offset().top) - this.$el.height(),
 		stopTop: (this.$parentt.offsetHeight + this.getOffset(this.$parentt).top) - this.$ell.offsetHeight
 	};
 };
