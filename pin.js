@@ -1,4 +1,4 @@
-function Nail(container) {
+function Pin(container) {
 	this.$el = $(container);
 	this.$ell = $(container)[0];
 	this.$parentt = this.$ell.parentNode;
@@ -6,7 +6,7 @@ function Nail(container) {
 	this.init();
 }
 
-Nail.prototype.init = function() {
+Pin.prototype.init = function() {
 	this.bind();
 	this.calcPositions();
 
@@ -15,7 +15,7 @@ Nail.prototype.init = function() {
 	this.onWindowScroll();
 };
 
-Nail.prototype.calcPositions = function() {
+Pin.prototype.calcPositions = function() {
 	this.positions = {
 		offset: this.getOffset(this.$ell),
 		parentOffset: this.getParentOffset(),
@@ -23,7 +23,7 @@ Nail.prototype.calcPositions = function() {
 	};
 };
 
-Nail.prototype.getOffset = function(element) {
+Pin.prototype.getOffset = function(element) {
 	var de = document.documentElement;
 	var box = element.getBoundingClientRect();
 	var top = box.top + window.pageYOffset - de.clientTop;
@@ -34,18 +34,18 @@ Nail.prototype.getOffset = function(element) {
 	};
 };
 
-Nail.prototype.getParentOffset = function() {
+Pin.prototype.getParentOffset = function() {
 	return {
 		left: this.$ell.offsetLeft
 	}
 };
 
-Nail.prototype.bind = function() {
+Pin.prototype.bind = function() {
 	window.onscroll = this.onWindowScroll.bind(this);
 	window.onresize = this.reload.bind(this);
 };
 
-Nail.prototype.reload = function() {
+Pin.prototype.reload = function() {
 	this.setCss();
 	this.calcPositions();
 	this.onWindowScroll();
@@ -58,7 +58,7 @@ Nail.prototype.reload = function() {
 * stuff. That's why it looks like a mess
 * :|
 **/
-Nail.prototype.onWindowScroll = function() {
+Pin.prototype.onWindowScroll = function() {
 	var newTop;
 
 	// if the window is smaller then it won't stick
@@ -85,7 +85,7 @@ Nail.prototype.onWindowScroll = function() {
 	});
 };
 
-Nail.prototype.touchBottom = function() {
+Pin.prototype.touchBottom = function() {
 	// if the scroll passed the end of the parent
 	if(window.scrollY > this.positions.stopTop) {
 		this.setCss({
@@ -102,7 +102,7 @@ Nail.prototype.touchBottom = function() {
 	}
 };
 
-Nail.prototype.setCss = function(properties) {
+Pin.prototype.setCss = function(properties) {
 	if(!properties) {
 		this.$el.attr('style', '');
 		return;
@@ -111,6 +111,6 @@ Nail.prototype.setCss = function(properties) {
 };
 
 
-Nail.prototype.windowIsSmaller = function() {
+Pin.prototype.windowIsSmaller = function() {
 	return window.innerHeight < this.$ell.offsetHeight;
 };
