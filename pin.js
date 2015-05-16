@@ -1,7 +1,6 @@
 function Pin(container) {
-	this.$el = $(container);
-	this.$ell = $(container)[0];
-	this.$parentt = this.$ell.parentNode;
+	this.el = document.querySelector(container);
+	this.$parentt = this.el.parentNode;
 
 	this.init();
 }
@@ -17,9 +16,9 @@ Pin.prototype.init = function() {
 
 Pin.prototype.calcPositions = function() {
 	this.positions = {
-		offset: this.getOffset(this.$ell),
+		offset: this.getOffset(this.el),
 		parentOffset: this.getParentOffset(),
-		stopTop: (this.$parentt.offsetHeight + this.getOffset(this.$parentt).top) - this.$ell.offsetHeight
+		stopTop: (this.$parentt.offsetHeight + this.getOffset(this.$parentt).top) - this.el.offsetHeight
 	};
 };
 
@@ -35,7 +34,7 @@ Pin.prototype.getOffset = function(element) {
 
 Pin.prototype.getParentOffset = function() {
 	return {
-		left: this.$ell.offsetLeft
+		left: this.el.offsetLeft
 	}
 };
 
@@ -45,7 +44,7 @@ Pin.prototype.bind = function() {
 };
 
 Pin.prototype.reload = function() {
-	this.setCss();
+	this.setCss();S
 	this.calcPositions();
 	this.onWindowScroll();
 };
@@ -68,9 +67,10 @@ Pin.prototype.onWindowScroll = function() {
 	if(this.touchBottom()) return;
 	newTop = window.scrollY - this.positions.offset.top;
 
+
 	// some checks to stop unecessary code repetition
-	if(newTop > 0 && this.$el.css('position') === 'fixed') return;
-	if(newTop <= 0 && (this.$el.css('position') === 'relative' || this.$el.css('position') === 'static')) return;
+	if(newTop > 0 && this.getStyle(this.el, 'position') === 'fixed') return;
+	if(newTop <= 0 && (this.getStyle(this.el, 'position') === 'relative' || this.getStyle(this.el, 'position') === 'static')) return;
 
 	if(newTop > 0) {
 		this.setCss({
@@ -91,7 +91,7 @@ Pin.prototype.onWindowScroll = function() {
 Pin.prototype.touchBottom = function() {
 	// if the scroll passed the end of the parent
 	if(window.scrollY > this.positions.stopTop) {
-		if(this.$el.css('position') === 'absolute') return true;
+		if(this.getStyle(this.el, 'position') === 'absolute') return true;
 		this.setCss({
 			top: '',
 			marginLeft: '',
@@ -108,13 +108,17 @@ Pin.prototype.touchBottom = function() {
 
 Pin.prototype.setCss = function(properties) {
 	if(!properties) {
-		this.$ell.removeAttribute('style');
+		this.el.removeAttribute('style');
 		return;
 	}
 
 	for(var property in properties) {
-		this.$ell.style[property] = properties[property];
+		this.el.style[property] = properties[property];
 	}
+};
+
+Pin.prototype.getStyle = function(el, property) {
+	return window.getComputedStyle(el)[property];
 };
 
 Pin.prototype.toPx = function(n) {
@@ -123,5 +127,5 @@ Pin.prototype.toPx = function(n) {
 
 
 Pin.prototype.windowIsSmaller = function() {
-	return window.innerHeight < this.$ell.offsetHeight;
+	return window.innerHeight < this.el.offsetHeight;
 };
