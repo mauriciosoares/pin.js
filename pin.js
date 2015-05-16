@@ -70,29 +70,34 @@ Pin.prototype.onWindowScroll = function() {
 
 	// some checks to stop unecessary code repetition
 	if(newTop > 0 && this.$el.css('position') === 'fixed') return;
-	if(newTop <= 0 && this.$el.css('position') === 'relative') return;
+	if(newTop <= 0 && (this.$el.css('position') === 'relative' || this.$el.css('position') === 'static')) return;
 
-	this.setCss({
-		position: (newTop > 0 ? 'fixed' : ''),
-		// adds the left and top property, minus the margins,
-		// so the element sticks in the same position it was before
-		left: (newTop > 0 ? this.positions.offset.left : ''),
-		top: (newTop > 0 ? 0 : ''),
-		marginLeft: (newTop > 0 ? 0 : ''),
-		marginTop: (newTop > 0 ? 0 : ''),
-		bottom: ''
-	});
+	if(newTop > 0) {
+		this.setCss({
+			position: 'fixed',
+			// adds the left and top property, minus the margins,
+			// so the element sticks in the same position it was before
+			left: this.toPx(this.positions.offset.left),
+			top: 0,
+			marginLeft: 0,
+			marginTop: 0,
+			bottom: ''
+		});
+	} else {
+		this.setCss();
+	}
 };
 
 Pin.prototype.touchBottom = function() {
 	// if the scroll passed the end of the parent
 	if(window.scrollY > this.positions.stopTop) {
+		if(this.$el.css('position') === 'absolute') return true;
 		this.setCss({
 			top: '',
 			marginLeft: '',
 			bottom: 0,
 			position: 'absolute',
-			left: this.positions.parentOffset.left
+			left: this.toPx(this.positions.parentOffset.left)
 		});
 
 		return true;
@@ -104,10 +109,16 @@ Pin.prototype.touchBottom = function() {
 Pin.prototype.setCss = function(properties) {
 	if(!properties) {
 		this.$ell.removeAttribute('style');
-		this.$el.attr('style', '');
 		return;
 	}
-	this.$el.css(properties);
+
+	for(var property in properties) {
+		this.$ell.style[property] = properties[property];
+	}
+};
+
+Pin.prototype.toPx = function(n) {
+	return n + 'px';
 };
 
 
