@@ -26,11 +26,10 @@ Pin.prototype.calcPositions = function() {
 Pin.prototype.getOffset = function(element) {
 	var de = document.documentElement;
 	var box = element.getBoundingClientRect();
-	var top = box.top + window.pageYOffset - de.clientTop;
-	var left = box.left + window.pageXOffset - de.clientLeft;
 
 	return {
-		top: top, left: left
+		top: box.top + window.pageYOffset - de.clientTop,
+		left: box.left + window.pageXOffset - de.clientLeft
 	};
 };
 
@@ -104,6 +103,7 @@ Pin.prototype.touchBottom = function() {
 
 Pin.prototype.setCss = function(properties) {
 	if(!properties) {
+		this.$ell.removeAttribute('style');
 		this.$el.attr('style', '');
 		return;
 	}
