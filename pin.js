@@ -39,12 +39,15 @@ Pin.prototype.getParentOffset = function() {
 };
 
 Pin.prototype.bind = function() {
-	window.onscroll = this.onWindowScroll.bind(this);
-	window.onresize = this.reload.bind(this);
+	// get's if it's on mobile or desktop, to change scroll event
+	// var eventType = this.isMobile() ? 'touchmove' : 'scroll';
+
+	window.addEventListener('resize', this.reload.bind(this));
+	window.addEventListener('scroll', this.onWindowScroll.bind(this));
 };
 
 Pin.prototype.reload = function() {
-	this.setCss();S
+	this.setCss();
 	this.calcPositions();
 	this.onWindowScroll();
 };
@@ -125,6 +128,10 @@ Pin.prototype.getStyle = function(el, property) {
 
 Pin.prototype.toPx = function(n) {
 	return n + 'px';
+};
+
+Pin.prototype.isMobile = function() {
+	return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 };
 
 
