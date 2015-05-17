@@ -83,15 +83,17 @@ Pin.prototype.onWindowScroll = function() {
 			marginTop: 0,
 			bottom: ''
 		});
-	} else {
-		this.setCss();
+		return;
 	}
+
+	this.setCss();
 };
 
 Pin.prototype.touchBottom = function() {
 	// if the scroll passed the end of the parent
 	if(window.scrollY > this.positions.stopTop) {
 		if(this.getStyle(this.el, 'position') === 'absolute') return true;
+
 		this.setCss({
 			top: '',
 			marginLeft: '',
@@ -101,9 +103,9 @@ Pin.prototype.touchBottom = function() {
 		});
 
 		return true;
-	} else {
-		return false;
 	}
+
+	return false;
 };
 
 Pin.prototype.setCss = function(properties) {
