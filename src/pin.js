@@ -3,7 +3,7 @@
 
   function Pin(container) {
     this.el = document.querySelector(container);
-    this.$parentt = this.el.parentNode;
+    this.parent = this.el.parentNode;
 
     this.init();
   }
@@ -26,7 +26,7 @@
     this.positions = {
       offset: this.getOffset(this.el),
       parentOffset: this.getParentOffset(),
-      stopTop: (this.$parentt.offsetHeight + this.getOffset(this.$parentt).top) - this.el.offsetHeight
+      stopTop: (this.parent.offsetHeight + this.getOffset(this.parent).top) - this.el.offsetHeight
     };
   };
 
