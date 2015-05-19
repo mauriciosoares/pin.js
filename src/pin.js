@@ -1,4 +1,4 @@
-(function() {
+(function(window, document) {
   'use strict';
 
   function Pin(container) {
@@ -79,7 +79,7 @@
     var newTop;
 
     // if the window is smaller then it won't stick
-    if(this.windowIsSmaller()) return;
+    if(windowIsSmaller(this.el)) return;
 
     // if the window got to the bottom of the parent element
     // of the container element, it stops the element
@@ -88,15 +88,15 @@
 
 
     // some checks to stop unecessary code repetition
-    if(newTop > 0 && this.getStyle(this.el, 'position') === 'fixed') return;
-    if(newTop <= 0 && (this.getStyle(this.el, 'position') === 'relative' || this.getStyle(this.el, 'position') === 'static')) return;
+    if(newTop > 0 && getStyle(this.el, 'position') === 'fixed') return;
+    if(newTop <= 0 && (getStyle(this.el, 'position') === 'relative' || getStyle(this.el, 'position') === 'static')) return;
 
     if(newTop > 0) {
       this.setCss({
         position: 'fixed',
         // adds the left and top property, minus the margins,
         // so the element sticks in the same position it was before
-        left: this.toPx(this.positions.offset.left),
+        left: toPx(this.positions.offset.left),
         top: 0,
         marginLeft: 0,
         marginTop: 0,
@@ -111,14 +111,14 @@
   Pin.prototype.touchBottom = function() {
     // if the scroll passed the end of the parent
     if(window.scrollY > this.positions.stopTop) {
-      if(this.getStyle(this.el, 'position') === 'absolute') return true;
+      if(getStyle(this.el, 'position') === 'absolute') return true;
 
       this.setCss({
         top: '',
         marginLeft: '',
         bottom: 0,
         position: 'absolute',
-        left: this.toPx(this.positions.parentOffset.left)
+        left: toPx(this.positions.parentOffset.left)
       });
 
       return true;
@@ -138,21 +138,28 @@
     }
   };
 
-  Pin.prototype.getStyle = function(el, property) {
+  /**
+   * Private functions
+   *
+   * The functions below are not supposed to be used by the dev
+   */
+
+  function getStyle(el, property) {
     return window.getComputedStyle(el)[property];
-  };
+  }
 
-  Pin.prototype.toPx = function(n) {
+  function toPx(n) {
     return n + 'px';
-  };
+  }
 
-  Pin.prototype.isMobile = function() {
+  function isMobile() {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-  };
+  }
 
+  function windowIsSmaller(el) {
+    return window.innerHeight < el.offsetHeight;
+  }
 
-  Pin.prototype.windowIsSmaller = function() {
-    return window.innerHeight < this.el.offsetHeight;
-  };
+  window.Pin = Pin;
 
-} ());
+} (window, document));
