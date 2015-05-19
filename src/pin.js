@@ -40,7 +40,7 @@ Pin.prototype.getOffset = function(element) {
 Pin.prototype.getParentOffset = function() {
 	return {
 		left: this.el.offsetLeft
-	}
+	};
 };
 
 Pin.prototype.bind = function() {
