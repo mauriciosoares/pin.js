@@ -4,11 +4,12 @@
   <title></title>
 
   <style>
-    #container {
-      height: 3000px;
+    .container {
+      height: 2000px;
       position: relative;
       width: 600px;
       margin: auto;
+      border: 2px solid black;
     }
 
     #footer {
@@ -16,7 +17,7 @@
       background-color: red;
     }
 
-    #nail {
+    .nail {
       height: 300px;
       width: 200px;
       background-color: blue;
@@ -25,19 +26,48 @@
   </style>
 </head>
 <body>
-  <div id="container">
-    <div id="nail">
+  <div class="container">
+    <div id="nail1" class="nail">
       element<br>
       element<br>
       element<br>
     </div>
-    <div id="test"></div>
+  </div>
+  <div class="container">
+    <div id="nail2" class="nail">
+      element<br>
+      element<br>
+      element<br>
+    </div>
+  </div>
+  <div class="container">
+    <div id="nail3" class="nail">
+      element<br>
+      element<br>
+      element<br>
+    </div>
+  </div>
+  <div class="container">
+    <div id="nail4" class="nail">
+      element<br>
+      element<br>
+      element<br>
+    </div>
+  </div>
+  <div class="container">
+    <div id="nail5" class="nail">
+      element<br>
+      element<br>
+      element<br>
+    </div>
   </div>
   <div id="footer"></div>
   <script src="../src/pin.js"></script>
 
   <script>
-    var pin = new Pin('#nail');
+    for(var i = 1; i <= 5; i += 1) {
+      new Pin('#nail' + i);
+    }
   </script>
 </body>
 </html>
