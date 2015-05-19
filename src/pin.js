@@ -84,7 +84,7 @@
     // if the window got to the bottom of the parent element
     // of the container element, it stops the element
     if(this.touchBottom()) return;
-    newTop = window.scrollY - this.positions.offset.top;
+    newTop = window.pageYOffset - this.positions.offset.top;
 
 
     // some checks to stop unecessary code repetition
@@ -110,7 +110,7 @@
 
   Pin.prototype.touchBottom = function() {
     // if the scroll passed the end of the parent
-    if(window.scrollY > this.positions.stopTop) {
+    if(window.pageYOffset > this.positions.stopTop) {
       if(getStyle(this.el, 'position') === 'absolute') return true;
 
       this.setCss({
