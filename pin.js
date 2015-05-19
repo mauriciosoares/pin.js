@@ -14,6 +14,11 @@ Pin.prototype.init = function() {
 	this.onWindowScroll();
 };
 
+Pin.prototype.destroy = function() {
+	this.setCss();
+	this.unbind();
+};
+
 Pin.prototype.calcPositions = function() {
 	this.positions = {
 		offset: this.getOffset(this.el),
@@ -39,11 +44,19 @@ Pin.prototype.getParentOffset = function() {
 };
 
 Pin.prototype.bind = function() {
-	// get's if it's on mobile or desktop, to change scroll event
-	// var eventType = this.isMobile() ? 'touchmove' : 'scroll';
+	// need to attach to a seperate variable, since bind
+	// creates another wraped function, and I can't unbind
+	// it in the destroy method.
+	this.reloadBind = this.reload.bind(this);
+	this.onWindowScrollBind = this.onWindowScroll.bind(this);
 
-	window.addEventListener('resize', this.reload.bind(this));
-	window.addEventListener('scroll', this.onWindowScroll.bind(this));
+	window.addEventListener('resize', this.reloadBind);
+	window.addEventListener('scroll', this.onWindowScrollBind);
+};
+
+Pin.prototype.unbind = function() {
+	window.removeEventListener('resize', this.reloadBind);
+	window.removeEventListener('scroll', this.onWindowScrollBind);
 };
 
 Pin.prototype.reload = function() {
