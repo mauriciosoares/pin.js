@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/mauriciosoares/pin.js/issues"
   },
-  "homepage": "https://github.com/mauriciosoares/pin.js"
+  "homepage": "https://github.com/mauriciosoares/pin.js",
+  "devDependencies": {
+    "grunt": "^0.4.5"
+  }
 }

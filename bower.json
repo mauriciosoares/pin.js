@@ -1,0 +1,26 @@
+{
+  "name": "pin.js",
+  "main": "pin.js",
+  "version": "0.0.1",
+  "homepage": "https://github.com/mauriciosoares/pin.js",
+  "authors": [
+    "Mauricio Soares <m.soares2603@gmail.com>"
+  ],
+  "description": "Dependency free plugin to pin elements as you scroll.",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "pin.js",
+    "js",
+    "javascript"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
