@@ -3,7 +3,8 @@ module.exports = function(grunt) {
 
   var tasks = [
     'grunt-contrib-uglify',
-    'grunt-contrib-jshint'
+    'grunt-contrib-jshint',
+    'grunt-contrib-watch'
   ];
 
   var config = {};
@@ -49,6 +50,17 @@ module.exports = function(grunt) {
       }
     }
   };
+
+  // =============================================
+  // watch
+  config.watch = {};
+  config.watch.scripts = {
+    files: ['src/*.js'],
+    tasks: ['jshint:dist'],
+    options: {
+      spawn: false,
+    }
+  }
 
 
   grunt.initConfig(config);
