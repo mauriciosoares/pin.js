@@ -29,11 +29,11 @@
   };
 
   Pin.prototype.createHelperElement = function() {
-    debugger;
+    // debugger;
   };
 
   Pin.prototype.destroy = function() {
-    this.setCss();
+    setCss(this.el);
     this.unbind();
   };
 
@@ -42,7 +42,9 @@
     // sets a position relative, that's because
     // the pinned element gets position absolute
     if(getStyle(this.parent, 'position') === 'static') {
-      this.parent.style.position = 'relative';
+      setCss(this.parent, {
+        position: 'relative'
+      });
     }
 
     this.positions = {
@@ -85,7 +87,7 @@
   };
 
   Pin.prototype.reload = function() {
-    this.setCss();
+    setCss(this.el);
     this.calcPositions();
     this.onWindowScroll();
   };
@@ -114,7 +116,7 @@
     if(newTop <= 0 && (getStyle(this.el, 'position') === 'relative' || getStyle(this.el, 'position') === 'static')) return;
 
     if(newTop > 0) {
-      this.setCss({
+      setCss(this.el, {
         position: 'fixed',
         // adds the left and top property, minus the margins,
         // so the element sticks in the same position it was before
@@ -130,7 +132,7 @@
       return;
     }
 
-    this.setCss();
+    setCss(this.el);
     this.options.onUnpin(this);
   };
 
@@ -139,7 +141,7 @@
     if(window.pageYOffset > this.positions.stopTop) {
       if(getStyle(this.el, 'position') === 'absolute') return true;
 
-      this.setCss({
+      setCss(this.el, {
         top: '',
         marginLeft: '',
         bottom: 0,
@@ -155,22 +157,22 @@
     return false;
   };
 
-  Pin.prototype.setCss = function(properties) {
-    if(!properties) {
-      this.el.removeAttribute('style');
-      return;
-    }
-
-    for(var property in properties) {
-      this.el.style[property] = properties[property];
-    }
-  };
-
   /**
    * Private functions
    *
    * The functions below are not supposed to be used by the dev
    */
+
+  function setCss(el, properties) {
+    if(!properties) {
+      el.removeAttribute('style');
+      return;
+    }
+
+    for(var property in properties) {
+      el.style[property] = properties[property];
+    }
+  }
 
   function getStyle(el, property) {
     return (property) ? window.getComputedStyle(el)[property] : window.getComputedStyle(el);
