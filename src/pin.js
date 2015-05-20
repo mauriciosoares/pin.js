@@ -29,11 +29,27 @@
   };
 
   Pin.prototype.createHelperElement = function() {
-    // debugger;
+    this.helperDiv = document.createElement(this.el.tagName);
+    setStyle(this.helperDiv, {
+      position: getStyle(this.el, 'position'),
+      width: getStyle(this.el, 'width'),
+      height: getStyle(this.el, 'height'),
+      float: getStyle(this.el, 'float'),
+      display: 'none',
+      visibility: 'hidden'
+    });
+
+    this.parent.insertBefore(this.helperDiv, this.el)
+  };
+
+  Pin.prototype.showHelperElement = function(show) {
+    setStyle(this.helperDiv, {
+      display: (show === false) ? 'none' : 'block'
+    })
   };
 
   Pin.prototype.destroy = function() {
-    setCss(this.el);
+    setStyle(this.el);
     this.unbind();
   };
 
@@ -42,7 +58,7 @@
     // sets a position relative, that's because
     // the pinned element gets position absolute
     if(getStyle(this.parent, 'position') === 'static') {
-      setCss(this.parent, {
+      setStyle(this.parent, {
         position: 'relative'
       });
     }
@@ -87,7 +103,8 @@
   };
 
   Pin.prototype.reload = function() {
-    setCss(this.el);
+    this.showHelperElement(false);
+    setStyle(this.el);
     this.calcPositions();
     this.onWindowScroll();
   };
@@ -116,7 +133,7 @@
     if(newTop <= 0 && (getStyle(this.el, 'position') === 'relative' || getStyle(this.el, 'position') === 'static')) return;
 
     if(newTop > 0) {
-      setCss(this.el, {
+      setStyle(this.el, {
         position: 'fixed',
         // adds the left and top property, minus the margins,
         // so the element sticks in the same position it was before
@@ -128,12 +145,14 @@
       });
 
       this.options.onPin(this);
+      this.showHelperElement();
 
       return;
     }
 
-    setCss(this.el);
+    setStyle(this.el);
     this.options.onUnpin(this);
+    this.showHelperElement(false);
   };
 
   Pin.prototype.touchBottom = function() {
@@ -141,7 +160,7 @@
     if(window.pageYOffset > this.positions.stopTop) {
       if(getStyle(this.el, 'position') === 'absolute') return true;
 
-      setCss(this.el, {
+      setStyle(this.el, {
         top: '',
         marginLeft: '',
         bottom: 0,
@@ -150,6 +169,7 @@
       });
 
       this.options.onTouchBottom(this);
+      this.showHelperElement();
 
       return true;
     }
@@ -163,7 +183,7 @@
    * The functions below are not supposed to be used by the dev
    */
 
-  function setCss(el, properties) {
+  function setStyle(el, properties) {
     if(!properties) {
       el.removeAttribute('style');
       return;
