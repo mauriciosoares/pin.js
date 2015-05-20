@@ -202,10 +202,6 @@
     return n + 'px';
   }
 
-  function isMobile() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-  }
-
   function windowIsSmaller(el) {
     return window.innerHeight < el.offsetHeight;
   }
