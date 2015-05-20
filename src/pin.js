@@ -33,6 +33,13 @@
   };
 
   Pin.prototype.calcPositions = function() {
+    // if parent does not have a position
+    // sets a position relative, that's because
+    // the pinned element gets position absolute
+    if(getStyle(this.parent, 'position') === 'static') {
+      this.parent.style.position = 'relative';
+    }
+
     this.positions = {
       offset: this.getOffset(this.el),
       parentOffset: this.getParentOffset(),
