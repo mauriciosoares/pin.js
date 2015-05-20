@@ -1,6 +1,6 @@
 # Pin.js
 
-Finally a pin.js plugin dependency free!
+Finally dependency free Pin plugin!
 
 Pin.js pins (duh) your elements as you scroll.
 
