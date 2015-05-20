@@ -39,13 +39,13 @@
       visibility: 'hidden'
     });
 
-    this.parent.insertBefore(this.helperDiv, this.el)
+    this.parent.insertBefore(this.helperDiv, this.el);
   };
 
   Pin.prototype.showHelperElement = function(show) {
     setStyle(this.helperDiv, {
       display: (show === false) ? 'none' : 'block'
-    })
+    });
   };
 
   Pin.prototype.destroy = function() {
@@ -200,10 +200,6 @@
 
   function toPx(n) {
     return n + 'px';
-  }
-
-  function isMobile() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   }
 
   function windowIsSmaller(el) {
