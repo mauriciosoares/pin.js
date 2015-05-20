@@ -2,7 +2,41 @@
 
 Finally a pin.js plugin dependency free!
 
-Pin.js pins (duh) your elements as you scroll. It works on all standard modern browsers, and also supports mobile devices (for now safari)
+Pin.js pins (duh) your elements as you scroll.
+
+It works on all standard modern browsers, and also supports mobile devices smoothly! (Safari on IOS and Chrome on Android)
+
+## Install
+
+You can install it using [Bower](http://bower.io/)
+
+```
+bower install pin.js
+```
+
+Or you can clone/[download](https://github.com/mauriciosoares/pin.js/archive/master.zip) the project.
+
+## Usage
+
+1. Import the pin.js script
+
+```html
+<script src="bower_components/pin.js/dist/pin.min.js"></script>
+```
+
+2. Setup an element
+
+```html
+<div id="pin"></div>
+```
+
+3. Pin it!
+
+```js
+new Pin('#pin')
+```
+
+You can use query selector to pin an element, but it'll take only the first element on the query.
 
 ## Browser Support
 
