@@ -40,9 +40,9 @@ You can use query selector to pin an element, but it'll take only the first elem
 
 ## Gotchas
 
-Pin.js will create a fake element to display on the same position of the element whenever it is pinned. Some properties will be cloned like `width` `height` `float` `position` and `display`.
+Pin.js will create a fake element to display on the same position of the element whenever it is pinned. Some properties will be cloned like `width`, `height`, `float`, `position` and `display`.
 
-If the parent element doesn't have any position (`static`), when the pinned element touches the bottom it'll automatically be set to `relative`.
+If the parent element doesn't have any position (`static`) when the pinned element touches the bottom it'll automatically be set to `relative`.
 
 ## Browser Support
 
