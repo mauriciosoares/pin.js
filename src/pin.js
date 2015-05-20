@@ -19,12 +19,17 @@
   };
 
   Pin.prototype.init = function() {
+    this.createHelperElement();
     this.bind();
     this.calcPositions();
 
     // simulates the window scroll, in case the user is already
     // in the middle of the scroll bar when the page loads (default browser action)
     this.onWindowScroll();
+  };
+
+  Pin.prototype.createHelperElement = function() {
+    debugger;
   };
 
   Pin.prototype.destroy = function() {
@@ -168,7 +173,7 @@
    */
 
   function getStyle(el, property) {
-    return window.getComputedStyle(el)[property];
+    return (property) ? window.getComputedStyle(el)[property] : window.getComputedStyle(el);
   }
 
   function toPx(n) {
