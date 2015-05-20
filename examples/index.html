@@ -66,7 +66,21 @@
 
   <script>
     for(var i = 1; i <= 5; i += 1) {
-      new Pin('#nail' + i);
+      (function(i) {
+        new Pin('#nail' + i, {
+          onPin: function(pin) {
+            console.log('pin', i);
+          },
+
+          onUnpin: function(pin) {
+            console.log('unpin', i);
+          },
+
+          onTouchBottom: function(pin) {
+            console.log('ontouchbottom', i);
+          }
+        });
+      } (i))
     }
   </script>
 </body>

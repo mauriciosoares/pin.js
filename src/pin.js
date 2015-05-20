@@ -1,12 +1,22 @@
 (function(window, document) {
   'use strict';
 
-  function Pin(container) {
+  function Pin(container, options) {
     this.el = document.querySelector(container);
     this.parent = this.el.parentNode;
 
+    this.setOptions(options);
+
     this.init();
   }
+
+  Pin.prototype.setOptions = function(options) {
+    this.options = {
+      onPin: (options.onPin) ? options.onPin : function() {},
+      onUnpin: (options.onUnpin) ? options.onUnpin : function() {},
+      onTouchBottom: (options.onTouchBottom) ? options.onTouchBottom : function() {}
+    };
+  };
 
   Pin.prototype.init = function() {
     this.bind();
@@ -102,10 +112,14 @@
         marginTop: 0,
         bottom: ''
       });
+
+      this.options.onPin(this);
+
       return;
     }
 
     this.setCss();
+    this.options.onUnpin(this);
   };
 
   Pin.prototype.touchBottom = function() {
@@ -120,6 +134,8 @@
         position: 'absolute',
         left: toPx(this.positions.parentOffset.left)
       });
+
+      this.options.onTouchBottom(this);
 
       return true;
     }
