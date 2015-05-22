@@ -16,6 +16,7 @@
       onUnpin: (options.onUnpin !== undefined) ? options.onUnpin : Pin.noop,
       onTouchBottom: (options.onTouchBottom !== undefined) ? options.onTouchBottom : Pin.noop,
       stopOnBottom: (options.stopOnBottom !== undefined) ? options.stopOnBottom : true,
+      respectWindow: (options.respectWindow !== undefined) ? options.respectWindow : true
     };
   };
 
@@ -121,7 +122,9 @@
     var newTop;
 
     // if the window is smaller then it won't stick
-    if(Pin.windowIsSmaller(this.el)) return;
+    if(this.options.respectWindow) {
+      if(Pin.windowIsSmaller(this.el)) return;
+    }
 
     // if the window got to the bottom of the parent element
     // of the container element, it stops the element
