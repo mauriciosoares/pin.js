@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+
+  <style>
+    .container {
+      position: relative;
+      width: 600px;
+      margin: auto;
+    }
+
+    #footer {
+      height: 500px;
+      background-color: red;
+    }
+
+    .pin {
+      background-color: blue;
+      width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <ul class="container">
+    <li id="pin1" class="pin">
+      A
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+  </ul>
+  <ul class="container">
+    <li id="pin2" class="pin">
+      B
+    </li>
+        <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+  </ul>
+  <ul class="container">
+    <li id="pin3" class="pin">
+      C
+    </li>
+        <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+  </ul>
+  <ul class="container">
+    <li id="pin4" class="pin">
+      D
+    </li>
+        <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+  </ul>
+  <ul class="container">
+    <li id="pin5" class="pin">
+      E
+    </li>
+        <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+    <li>
+      Names :D
+    </li>
+  </ul>
+  <div id="footer"></div>
+  <script src="../src/pin.js"></script>
+
+  <script>
+    for(var i = 1; i <= 5; i += 1) {
+      (function(i) {
+        new Pin('#pin' + i, {
+          onPin: function(pin) {
+            console.log('pin', i);
+          },
+
+          onUnpin: function(pin) {
+            console.log('unpin', i);
+          },
+
+          onTouchBottom: function(pin) {
+            console.log('ontouchbottom', i);
+          }
+        });
+      } (i))
+    }
+  </script>
+</body>
+</html>
