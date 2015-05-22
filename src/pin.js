@@ -30,11 +30,11 @@
 
   Pin.prototype.createHelperElement = function() {
     this.helperDiv = document.createElement(this.el.tagName);
-    setStyle(this.helperDiv, {
-      position: getStyle(this.el, 'position'),
-      width: getStyle(this.el, 'width'),
-      height: getStyle(this.el, 'height'),
-      float: getStyle(this.el, 'float'),
+    Pin.setStyle(this.helperDiv, {
+      position: Pin.getStyle(this.el, 'position'),
+      width: Pin.getStyle(this.el, 'width'),
+      height: Pin.getStyle(this.el, 'height'),
+      float: Pin.getStyle(this.el, 'float'),
       display: 'none',
       visibility: 'hidden'
     });
@@ -43,13 +43,13 @@
   };
 
   Pin.prototype.showHelperElement = function(show) {
-    setStyle(this.helperDiv, {
+    Pin.setStyle(this.helperDiv, {
       display: (show === false) ? 'none' : 'block'
     });
   };
 
   Pin.prototype.destroy = function() {
-    setStyle(this.el);
+    Pin.setStyle(this.el);
     this.unbind();
   };
 
@@ -57,8 +57,8 @@
     // if parent does not have a position
     // sets a position relative, that's because
     // the pinned element gets position absolute
-    if(getStyle(this.parent, 'position') === 'static') {
-      setStyle(this.parent, {
+    if(Pin.getStyle(this.parent, 'position') === 'static') {
+      Pin.setStyle(this.parent, {
         position: 'relative'
       });
     }
@@ -104,7 +104,7 @@
 
   Pin.prototype.reload = function() {
     this.showHelperElement(false);
-    setStyle(this.el);
+    Pin.setStyle(this.el);
     this.calcPositions();
     this.onWindowScroll();
   };
@@ -120,7 +120,7 @@
     var newTop;
 
     // if the window is smaller then it won't stick
-    if(windowIsSmaller(this.el)) return;
+    if(Pin.windowIsSmaller(this.el)) return;
 
     // if the window got to the bottom of the parent element
     // of the container element, it stops the element
@@ -129,15 +129,15 @@
 
 
     // some checks to stop unecessary code repetition
-    if(newTop > 0 && getStyle(this.el, 'position') === 'fixed') return;
-    if(newTop <= 0 && (getStyle(this.el, 'position') === 'relative' || getStyle(this.el, 'position') === 'static')) return;
+    if(newTop > 0 && Pin.getStyle(this.el, 'position') === 'fixed') return;
+    if(newTop <= 0 && (Pin.getStyle(this.el, 'position') === 'relative' || Pin.getStyle(this.el, 'position') === 'static')) return;
 
     if(newTop > 0) {
-      setStyle(this.el, {
+      Pin.setStyle(this.el, {
         position: 'fixed',
         // adds the left and top property, minus the margins,
         // so the element sticks in the same position it was before
-        left: toPx(this.positions.offset.left),
+        left: Pin.toPx(this.positions.offset.left),
         top: 0,
         marginLeft: 0,
         marginTop: 0,
@@ -150,7 +150,7 @@
       return;
     }
 
-    setStyle(this.el);
+    Pin.setStyle(this.el);
     this.options.onUnpin(this);
     this.showHelperElement(false);
   };
@@ -158,14 +158,14 @@
   Pin.prototype.touchBottom = function() {
     // if the scroll passed the end of the parent
     if(window.pageYOffset > this.positions.stopTop) {
-      if(getStyle(this.el, 'position') === 'absolute') return true;
+      if(Pin.getStyle(this.el, 'position') === 'absolute') return true;
 
-      setStyle(this.el, {
+      Pin.setStyle(this.el, {
         top: '',
         marginLeft: '',
         bottom: 0,
         position: 'absolute',
-        left: toPx(this.positions.parentOffset.left)
+        left: Pin.toPx(this.positions.parentOffset.left)
       });
 
       this.options.onTouchBottom(this);
@@ -178,12 +178,12 @@
   };
 
   /**
-   * Private functions
+   * "Private" functions
    *
    * The functions below are not supposed to be used by the dev
    */
 
-  function setStyle(el, properties) {
+  Pin.setStyle = function(el, properties) {
     if(!properties) {
       el.removeAttribute('style');
       return;
@@ -192,20 +192,35 @@
     for(var property in properties) {
       el.style[property] = properties[property];
     }
-  }
+  };
 
-  function getStyle(el, property) {
+  Pin.getStyle = function(el, property) {
     return (property) ? window.getComputedStyle(el)[property] : window.getComputedStyle(el);
-  }
+  };
 
-  function toPx(n) {
+  Pin.toPx = function(n) {
     return n + 'px';
-  }
+  };
 
-  function windowIsSmaller(el) {
+  Pin.windowIsSmaller = function(el) {
     return window.innerHeight < el.offsetHeight;
-  }
+  };
+
+  Pin.init = function() {
+
+  };
 
   window.Pin = Pin;
+
+  /**
+   * Initialization
+   *
+   * Automatically searches for elements in
+   * the DOM with the data-pin attribute
+   */
+
+  if(typeof Document !== 'undefined') {
+    document.addEventListener('DOMContentLoaded', Pin.init);
+  }
 
 } (window, document));
