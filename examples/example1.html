@@ -186,7 +186,11 @@
   <script src="../src/pin.js"></script>
 
   <script>
-    for(var i = 1; i <= 5; i += 1) {
+    new Pin('#pin1', {
+      stopOnBottom: false
+    });
+
+    for(var i = 2; i <= 5; i += 1) {
       (function(i) {
         new Pin('#pin' + i, {
           onPin: function(pin) {

@@ -12,9 +12,10 @@
 
   Pin.prototype.setOptions = function(options) {
     this.options = {
-      onPin: (options.onPin) ? options.onPin : Pin.noop,
-      onUnpin: (options.onUnpin) ? options.onUnpin : Pin.noop,
-      onTouchBottom: (options.onTouchBottom) ? options.onTouchBottom : Pin.noop
+      onPin: (options.onPin !== undefined) ? options.onPin : Pin.noop,
+      onUnpin: (options.onUnpin !== undefined) ? options.onUnpin : Pin.noop,
+      onTouchBottom: (options.onTouchBottom !== undefined) ? options.onTouchBottom : Pin.noop,
+      stopOnBottom: (options.stopOnBottom !== undefined) ? options.stopOnBottom : true,
     };
   };
 
@@ -156,6 +157,7 @@
   };
 
   Pin.prototype.touchBottom = function() {
+    if(!this.options.stopOnBottom) return false;
     // if the scroll passed the end of the parent
     if(window.pageYOffset > this.positions.stopTop) {
       if(Pin.getStyle(this.el, 'position') === 'absolute') return true;
