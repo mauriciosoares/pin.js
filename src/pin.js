@@ -12,9 +12,9 @@
 
   Pin.prototype.setOptions = function(options) {
     this.options = {
-      onPin: (options.onPin) ? options.onPin : function() {},
-      onUnpin: (options.onUnpin) ? options.onUnpin : function() {},
-      onTouchBottom: (options.onTouchBottom) ? options.onTouchBottom : function() {}
+      onPin: (options.onPin) ? options.onPin : Pin.noop,
+      onUnpin: (options.onUnpin) ? options.onUnpin : Pin.noop,
+      onTouchBottom: (options.onTouchBottom) ? options.onTouchBottom : Pin.noop
     };
   };
 
@@ -213,6 +213,8 @@
       new Pin(e);
     });
   };
+
+  Pin.noop = function() {};
 
   window.Pin = Pin;
 
