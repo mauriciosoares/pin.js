@@ -18,23 +18,41 @@ Or you can clone/[download](https://github.com/mauriciosoares/pin.js/archive/mas
 
 ## Usage
 
-1. Import the pin.js script
+### With JS
+
+1 - Import the pin.js script
 
 ```html
 <script src="bower_components/pin.js/dist/pin.min.js"></script>
 ```
 
-2. Setup an element
+2 - Setup an element
 
 ```html
 <div id="pin"></div>
 ```
 
-3. Pin it!
+3 - Pin it!
 
 ```js
 new Pin('#pin')
 ```
+
+### Without JS
+
+1 - Import the pin.js script
+
+```html
+<script src="bower_components/pin.js/dist/pin.min.js"></script>
+```
+
+2 - Setup an element with a `data-pin` attribute
+
+```html
+<div id="pin" data-pin></div>
+```
+
+3 - After that you have to... wait! there's no step 3 :smile:
 
 You can use query selector to pin an element, but it'll take only the first element on the query.
 
