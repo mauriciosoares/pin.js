@@ -35,7 +35,7 @@ Or you can clone/[download](https://github.com/mauriciosoares/pin.js/archive/mas
 3 - Pin it!
 
 ```js
-new Pin('#pin')
+new Pin('#pin');
 ```
 
 ### Without JS
