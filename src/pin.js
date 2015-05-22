@@ -1,11 +1,11 @@
 (function(window, document) {
   'use strict';
 
-  function Pin(container, options) {
-    this.el = document.querySelector(container);
+  function Pin(el, options) {
+    this.el = (typeof el === 'string') ? document.querySelector(el) : el;
     this.parent = this.el.parentNode;
 
-    this.setOptions(options);
+    this.setOptions(options || {});
 
     this.init();
   }
@@ -207,7 +207,11 @@
   };
 
   Pin.init = function() {
+    var pinElements = Array.prototype.slice.call(document.querySelectorAll('[data-pin]'));
 
+    pinElements.forEach(function(e) {
+      new Pin(e);
+    });
   };
 
   window.Pin = Pin;
