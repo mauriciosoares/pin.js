@@ -1,6 +1,6 @@
 # Pin.js
 
-Finally dependency free Pin plugin!
+Finally a dependency free Pin plugin!
 
 Pin.js pins (duh) your elements as you scroll.
 
@@ -36,6 +36,9 @@ Or you can clone/[download](https://github.com/mauriciosoares/pin.js/archive/mas
 
 ```js
 new Pin('#pin');
+
+// You can use a DOM reference as well
+new Pin(document.getElementById('pin'));
 ```
 
 ### Without JS
@@ -54,24 +57,82 @@ new Pin('#pin');
 
 3 - After that you have to... wait! there's no step 3 :smile:
 
-You can use query selector to pin an element, but it'll take only the first element on the query.
+_You can use query selector to pin an element, but it'll take only the first element on the query._
 
-## Gotchas
+## Documentation
 
-Pin.js will create a fake element to display on the same position of the element whenever it is pinned. Some properties will be cloned like `width`, `height`, `float`, `position` and `display`.
+### onPin - `Function`
+Triggers a callback whenever the element is _pinned_.
 
-If the parent element doesn't have any position (`static`) when the pinned element touches the bottom it'll automatically be set to `relative`.
+__Usage__
+```js
+new Pin('#pin', {
+  onPin: function() {
+    // code
+  }
+});
+```
 
-## Common Behaviors
+### onUnpin - `Function`
+Triggers a callback whenever the element is _unpinned_.
 
-* When the top of the browser touches the pinned element, it get's `fixed`.
+__Usage__
+```js
+new Pin('#pin', {
+  onUnpin: function() {
+    // code
+  }
+});
+```
 
-* When the pinned element touches the bottom of it's parent element, it stops on the bottom of the parent element. (Configurable)
+### onTouchBottom - `Function`
+Triggers a callback whenever the element is _touches the bottom_ of its parent container.
 
-* If the pinned element is smaller than the window height, it does not get pinned. (Usability purposes) (Configurable)
+__Usage__
+```js
+new Pin('#pin', {
+  onTouchBottom: function() {
+    // code
+  }
+});
+```
+
+### stopOnBottom - `Boolean` | Default `true`
+Stops the element when it _touches the bottom_ of its parent container.
+
+__Usage__
+```js
+new Pin('#pin', {
+  stopOnBottom: true
+});
+```
+
+### respectWindow - `Boolean` | Default `true`
+If the height of the browser is _smaller than the pinned element_, it automatically gets unpinned
+
+__Usage__
+```js
+new Pin('#pin', {
+  respectWindow: true
+});
+```
 
 ## Browser Support
 
 ![IE](https://cloud.githubusercontent.com/assets/398893/3528325/20373e76-078e-11e4-8e3a-1cb86cf506f0.png) | ![Chrome](https://cloud.githubusercontent.com/assets/398893/3528328/23bc7bc4-078e-11e4-8752-ba2809bf5cce.png) | ![Firefox](https://cloud.githubusercontent.com/assets/398893/3528329/26283ab0-078e-11e4-84d4-db2cf1009953.png) | ![Opera](https://cloud.githubusercontent.com/assets/398893/3528330/27ec9fa8-078e-11e4-95cb-709fd11dac16.png) | ![Safari](https://cloud.githubusercontent.com/assets/398893/3528331/29df8618-078e-11e4-8e3e-ed8ac738693f.png)
 --- | --- | --- | --- | --- |
 <center>9 ✔</center> | Latest ✔ | Latest ✔ | Latest ✔ | Latest ✔ |
+
+## Maintainer
+
+- Mauricio Soares - <http://github.com/mauriciosoares>
+
+## Contributing
+
+1. [Fork](http://help.github.com/forking/) Pin.js
+2. Create a topic branch - `git checkout -b my_branch`
+3. Push to your branch - `git push origin my_branch`
+4. Send me a [Pull Request](https://help.github.com/articles/using-pull-requests)
+5. That's it!
+
+Please respect the indentation rules and code style.
