@@ -5,9 +5,9 @@
 
   <style>
     .container {
-      position: relative;
       width: 600px;
       margin: auto;
+      margin-top: 100px;
     }
 
     #footer {
@@ -19,7 +19,9 @@
       background-color: blue;
       width: 300px;
       height: 200px;
-      margin-top: 50px
+      margin-top: 50px;
+      border-top: 20px solid black;
+      padding-top: 15px;
     }
   </style>
 </head>
@@ -189,7 +191,7 @@
 
   <script>
     new Pin('#pin1', {
-      // stopOnBottom: false
+      // stopOnBottom: false,
       respectWindow: true
     });
 
