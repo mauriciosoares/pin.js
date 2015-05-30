@@ -37,6 +37,7 @@
       width: Pin.getStyle(this.el, 'width'),
       height: Pin.getStyle(this.el, 'height'),
       float: Pin.getStyle(this.el, 'float'),
+      margin: Pin.getStyle(this.el, 'margin'),
       display: 'none',
       visibility: 'hidden'
     });
