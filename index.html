@@ -25,7 +25,12 @@
       </p>
 
       <p>
-        There's a bunch of cool stuff you can do with it, like:
+        If you need the documentation, check it on <a href="#link-direto-para-docs">Github</a>.
+      </p>
+
+      <p>
+        But if you are not convinced this is cool,<br>
+        Check a few things you can do with Pin.js:
       </p>
     </div>
 
@@ -33,11 +38,11 @@
       A cool quote like this one above.
     </h2>
 
-    <h2>
-      The Iphone contacts list (Ohhhh).
-    </h2>
 
     <div class="ioslist">
+      <h2>
+        The Iphone contacts list (Ohhhh).
+      </h2>
       <ul>
         <li class="ioslist-item is-title" data-pin>
           A
@@ -157,31 +162,51 @@
       </ul>
     </div>
 
-    <h2>
-      A nice sidebar for your website.
-    </h2>
+    <div class="sidebar-container">
+      <div class="sidebar" data-pin>
+        <div class="sidebar-title">
+          This is a nice sidebar
+        </div>
+        <ul>
+          <li>This may be a cool link</li>
+          <li>Another one</li>
+          <li>:D</li>
+        </ul>
+      </div>
+      <h2>
+        A nice sidebar for your website.
+      </h2>
+      <p>
+        These are just cool examples, it's up to you to create amazing stuff with this guy.
+      </p>
+
+      <p>
+        Have I told you that this is mobile compatible? It works smoothly on Safari for IOS and Chrome for Android.<br>
+        (Protip: That means you can use it on your native app developed with HTML+CSS+Javascript)
+      </p>
+    </div>
 
     <p>
-      These are just cool examples, it's up to you to create amazing stuff with this guy.
+      You scrooled to the bottom :)
     </p>
-
     <p>
-      Have I told you that this is mobile compatible? It works smoothly on Safari for IOS and Chrome for Android.<br>
-      (Protip: That means you can use it on your native app developed with HTML+CSS+Javascript)
+      Why don't you take a look at the <a href="#">repository</a> for this project?
     </p>
-
+    <p>
+      Maybe give your thoughts to the <a href="#">developer</a> as well, it would be great!
+    </p>
   </div>
 
   <script src="pin.js"></script>
   <script>
-  new Pin('#pin', {
-    onPin: function(pin) {
-      pin.el.classList.add('is-pinned');
-    },
-    onUnpin: function(pin) {
-      pin.el.classList.remove('is-pinned');
-    }
-  })
+    new Pin('#pin', {
+      onPin: function(pin) {
+        pin.el.classList.add('is-pinned');
+      },
+      onUnpin: function(pin) {
+        pin.el.classList.remove('is-pinned');
+      }
+    });
   </script>
 </body>
 </html>

@@ -1,6 +1,5 @@
 .container {
   width: 960px;
-  height: 6000px;
   margin: auto;
 }
 
@@ -82,4 +81,19 @@
 
 .ioslist-item:first-child {
   border: none;
+}
+
+.sidebar-container {
+  height: 5000px;
+  position: relative;
+}
+
+.sidebar {
+  float: left;
+  margin-right: 40px;
+}
+
+.sidebar-title {
+  font-size: 22px;
+  font-weight: bold;
 }
