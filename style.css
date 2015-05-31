@@ -62,6 +62,24 @@
   width: 12px;
 }
 
-.ioscontacts {
+.ioslist ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
 
+.ioslist-item {
+  font-weight: bold;
+  padding:5px 0;
+  border-top: 1px solid rgb(215, 215, 215);
+  font-family: arial;
+}
+
+.ioslist-item.is-title {
+  border: none;
+  background-color: rgb(215, 215, 215);
+}
+
+.ioslist-item:first-child {
+  border: none;
 }
