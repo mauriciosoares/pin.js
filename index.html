@@ -11,15 +11,57 @@
 <body>
 
   <div class="container">
-    <div class="quote" data-pin>
-      <i class="quote-pin"></i>
-      <blockquote class="quote-note is-yellow">
-        Pin.js
-      </blockquote>
+    <div>
+      <div class="quote" id="pin">
+        <i class="quote-pin"></i>
+        <blockquote class="quote-note is-yellow">
+          Pin.js
+        </blockquote>
 
+      </div>
+
+      <p>
+        <b>Pin.js</b> Let you pin elements as you scroll, cool isn't it?
+      </p>
+
+      <p>
+        There's a bunch of cool stuff you can do with it, like:
+      </p>
     </div>
+
+    <h2>
+      A cool quote like this one above.
+    </h2>
+
+    <h2>
+      The Iphone contacts list (Ohhhh).
+    </h2>
+
+    <h2>
+      A nice sidebar for your website.
+    </h2>
+
+    <p>
+      These are just cool examples, it's up to you to create amazing stuff with this guy.
+    </p>
+
+    <p>
+      Have I told you that this is mobile compatible? It works smoothly on Safari for IOS and Chrome for Android.<br>
+      (Protip: That means you can use it on your native app developed with HTML+CSS+Javascript)
+    </p>
+
   </div>
 
   <script src="pin.js"></script>
+  <script>
+  new Pin('#pin', {
+    onPin: function(pin) {
+      pin.el.classList.add('is-pinned');
+    },
+    onUnpin: function(pin) {
+      pin.el.classList.remove('is-pinned');
+    }
+  })
+  </script>
 </body>
 </html>

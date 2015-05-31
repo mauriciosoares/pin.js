@@ -37,6 +37,12 @@
       width: Pin.getStyle(this.el, 'width'),
       height: Pin.getStyle(this.el, 'height'),
       float: Pin.getStyle(this.el, 'float'),
+      margin: Pin.getStyle(this.el, 'margin'),
+      padding: Pin.getStyle(this.el, 'padding'),
+      borderTop: Pin.getStyle(this.el, 'borderTop'),
+      borderLeft: Pin.getStyle(this.el, 'borderLeft'),
+      borderRight: Pin.getStyle(this.el, 'borderRight'),
+      borderBottom: Pin.getStyle(this.el, 'borderBottom'),
       display: 'none',
       visibility: 'hidden'
     });
@@ -73,8 +79,8 @@
   };
 
   Pin.prototype.getOffset = function(element) {
-    var de = document.documentElement;
-    var box = element.getBoundingClientRect();
+    var de = document.documentElement,
+      box = element.getBoundingClientRect();
 
     return {
       top: box.top + window.pageYOffset - de.clientTop,
@@ -121,7 +127,7 @@
   Pin.prototype.onWindowScroll = function() {
     var newTop;
 
-    // if the window is smaller then it won't stick
+    // if the window is smaller then it won't pin
     if(this.options.respectWindow) {
       if(Pin.windowIsSmaller(this.el)) return;
     }
@@ -133,36 +139,52 @@
 
 
     // some checks to stop unecessary code repetition
+
+    // If the element is not touching the bottom,
+    // the newTop is bigger than 0, and its position is fixed
+    // returns.
     if(newTop > 0 && Pin.getStyle(this.el, 'position') === 'fixed') return;
+
+    // otherwise if its newTop is less or equal to 0
+    // and its position is already relative || static
+    // returns.
     if(newTop <= 0 && (Pin.getStyle(this.el, 'position') === 'relative' || Pin.getStyle(this.el, 'position') === 'static')) return;
 
-    if(newTop > 0) {
-      Pin.setStyle(this.el, {
-        position: 'fixed',
-        // adds the left and top property, minus the margins,
-        // so the element sticks in the same position it was before
-        left: Pin.toPx(this.positions.offset.left),
-        top: 0,
-        marginLeft: 0,
-        marginTop: 0,
-        bottom: ''
-      });
+    // pins the element if the newtop is bigger then the
+    // element top position.
+    if(newTop > 0) return this.pinElement();
 
-      this.options.onPin(this);
-      this.showHelperElement();
-
-      return;
-    }
-
+    // here it removes all the custom styles, meaning that the newTop
+    // is less then 0, but the element is not in its main
+    // position yet.
     Pin.setStyle(this.el);
     this.options.onUnpin(this);
     this.showHelperElement(false);
   };
 
+  Pin.prototype.pinElement = function() {
+    Pin.setStyle(this.el, {
+      position: 'fixed',
+      // adds the left and top property, minus the margins,
+      // so the element sticks in the same position it was before
+      left: Pin.toPx(this.positions.offset.left),
+      top: 0,
+      marginLeft: 0,
+      marginTop: 0,
+      bottom: ''
+    });
+
+    this.options.onPin(this);
+    this.showHelperElement();
+  };
+
   Pin.prototype.touchBottom = function() {
     if(!this.options.stopOnBottom) return false;
+
     // if the scroll passed the end of the parent
     if(window.pageYOffset > this.positions.stopTop) {
+      // here is some verification to prevent the setStyle
+      // to run multiple times unecessarally.
       if(Pin.getStyle(this.el, 'position') === 'absolute') return true;
 
       Pin.setStyle(this.el, {
