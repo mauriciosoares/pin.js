@@ -32,10 +32,11 @@
 
   Pin.prototype.createHelperElement = function() {
     this.helperDiv = document.createElement(this.el.tagName);
+
     Pin.setStyle(this.helperDiv, {
       position: Pin.getStyle(this.el, 'position'),
-      width: Pin.getStyle(this.el, 'width'),
       height: Pin.getStyle(this.el, 'height'),
+      width: Pin.getStyle(this.el, 'width'),
       float: Pin.getStyle(this.el, 'float'),
       margin: Pin.getStyle(this.el, 'margin'),
       padding: Pin.getStyle(this.el, 'padding'),
@@ -48,6 +49,12 @@
     });
 
     this.parent.insertBefore(this.helperDiv, this.el);
+  };
+
+  Pin.prototype.refreshHelperElementWidth = function() {
+    Pin.setStyle(this.helperDiv, {
+      width: Pin.getStyle(this.el, 'width'),
+    });
   };
 
   Pin.prototype.showHelperElement = function(show) {
@@ -115,6 +122,7 @@
     Pin.setStyle(this.el);
     this.calcPositions();
     this.onWindowScroll();
+    this.refreshHelperElementWidth();
   };
 
   /**
@@ -168,6 +176,7 @@
       // adds the left and top property, minus the margins,
       // so the element sticks in the same position it was before
       left: Pin.toPx(this.positions.offset.left),
+      width: Pin.getStyle(this.el, 'width'),
       top: 0,
       marginLeft: 0,
       marginTop: 0,
