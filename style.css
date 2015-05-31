@@ -3,6 +3,7 @@ body {
   color: white;
   font-size: 18px;
   font-family: Verdana;
+  line-height: 1.6;
 }
 
 hr {
@@ -117,8 +118,8 @@ p, h2 {
 }
 
 .sidebar-container {
-  height: 2000px;
   position: relative;
+  overflow: hidden;
 }
 
 .sidebar-holder {
@@ -129,10 +130,14 @@ p, h2 {
 .sidebar {
   float: left;
   margin-right: 40px;
-  padding-top: 24px;
+  padding-top: 18px;
 }
 
 .sidebar-title {
   font-size: 22px;
   font-weight: bold;
+}
+
+.sidebar-keepscrolling {
+  margin: 250px 0;
 }
