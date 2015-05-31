@@ -69,7 +69,7 @@
 
 .ioslist-item {
   font-weight: bold;
-  padding:5px 0;
+  padding: 10px;
   border-top: 1px solid rgb(215, 215, 215);
   font-family: arial;
 }
@@ -84,7 +84,7 @@
 }
 
 .sidebar-container {
-  height: 5000px;
+  height: 2000px;
   position: relative;
 }
 

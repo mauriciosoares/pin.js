@@ -197,11 +197,12 @@
       if(Pin.getStyle(this.el, 'position') === 'absolute') return true;
 
       Pin.setStyle(this.el, {
-        top: '',
-        marginLeft: '',
-        bottom: 0,
         position: 'absolute',
-        left: Pin.toPx(this.positions.parentOffset.left)
+        width: Pin.getStyle(this.el, 'width'),
+        top: '',
+        bottom: 0,
+        left: Pin.toPx(this.positions.parentOffset.left),
+        marginLeft: ''
       });
 
       this.options.onTouchBottom(this);
