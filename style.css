@@ -1,3 +1,32 @@
+body {
+  background: rgb(30, 30, 61);
+  color: white;
+  font-size: 18px;
+  font-family: Verdana;
+}
+
+hr {
+  border-color: rgb(39, 39, 103);
+}
+
+h2, a {
+  color: rgb(200, 200, 19);
+  text-shadow: 4px 4px 0px black;
+}
+
+a {
+  text-decoration: none;
+  transition: .2s;
+}
+
+a:hover {
+  opacity: .8;
+}
+
+p, h2 {
+  text-align: center;
+}
+
 .container {
   width: 960px;
   margin: auto;
@@ -7,7 +36,6 @@
   padding-top: 50px;
   position: relative;
   width: 300px;
-  margin: auto;
 }
 
 .quote-note {
@@ -22,12 +50,12 @@
 }
 
 .quote-note.is-yellow {
-  background: #eae672;
-  -webkit-transform: rotate(2deg);
-  -moz-transform: rotate(2deg);
-  -o-transform: rotate(2deg);
-  -ms-transform: rotate(2deg);
-  transform: rotate(2deg);
+  background: rgb(200, 200, 19);
+  -webkit-transform: rotate(-5deg);
+  -moz-transform: rotate(-5deg);
+  -o-transform: rotate(-5deg);
+  -ms-transform: rotate(-5deg);
+  transform: rotate(-5deg);
 }
 
 .quote-pin {
@@ -61,6 +89,11 @@
   width: 12px;
 }
 
+.ioslist {
+  background: white;
+  color: black;
+}
+
 .ioslist ul {
   padding: 0;
   margin: 0;
@@ -88,9 +121,15 @@
   position: relative;
 }
 
+.sidebar-holder {
+  float: left;
+  width: 660px;
+}
+
 .sidebar {
   float: left;
   margin-right: 40px;
+  padding-top: 24px;
 }
 
 .sidebar-title {
