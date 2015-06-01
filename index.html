@@ -212,13 +212,98 @@ new Pin(document.getElementById('pin'));
       <a href="#settings">Settings</a>
     </h2>
 
+    <div class="w600">
+      <p class="config-item">
+        <b>onPin</b> - <i>function</i><br>
+        Triggers a callback whenever the element is <i>pinned</i>.<br>
+        <b>Usage</b>
+      </p>
+<pre><code class="language-javascript">
+new Pin('#pin', {
+  onPin: function() {
+    // code
+  }
+});
+</code></pre>
 
-    <p>
-      Why don't you take a look at the <a class="link" href="https://github.com/mauriciosoares/pin.js">Repository</a> for this project?
-    </p>
-    <p>
-      Maybe give your thoughts to the <a class="link" href="http://twitter.com/omauriciosoares">Developer</a> as well, it would be great!
-    </p>
+      <p class="config-item">
+        <b>onUnpin</b> - <i>function</i><br>
+        Triggers a callback whenever the element is <i>unpinned</i>.<br>
+        <b>Usage</b>
+      </p>
+<pre><code class="language-javascript">
+new Pin('#pin', {
+  onUnpin: function() {
+    // code
+  }
+});
+</code></pre>
+
+      <p class="config-item">
+        <b>onTouchBottom</b> - <i>function</i><br>
+        Triggers a callback whenever the element is <i>touches the bottom</i> of its parent container.<br>
+        <b>Usage</b>
+      </p>
+<pre><code class="language-javascript">
+new Pin('#pin', {
+  onTouchBottom: function() {
+    // code
+  }
+});
+</code></pre>
+
+      <p class="config-item">
+        <b>stopOnBottom</b> - <i>Boolean</i> | Default <i>true</i><br>
+        Stops the element when it <i>touches the bottom</i> of its parent container.<br>
+        <b>Usage</b>
+      </p>
+<pre><code class="language-javascript">
+new Pin('#pin', {
+  stopOnBottom: true
+});
+</code></pre>
+
+      <p class="config-item">
+        <b>respectWindow</b> - <i>Boolean</i> | Default <i>true</i><br>
+        If the height of the browser is <i>smaller than the pinned element</i>, it automatically gets unpinned.<br>
+        <b>Usage</b>
+      </p>
+<pre><code class="language-javascript">
+new Pin('#pin', {
+  respectWindow: true
+});
+</code></pre>
+    </div>
+
+    <h2 id="methods">
+      <a href="#methods">Methods</a>
+    </h2>
+
+    <div class="w600">
+      <p class="config-item">
+        <b>reload</b><br>
+        Whenever you change the size of the pinned element, you should trigger this method to recalculate the positions of the it.<br>
+        <b>Usage</b>
+      </p>
+<pre><code class="language-javascript">
+var pin = new Pin('#pin');
+
+pin.reload();
+</code></pre>
+    </div>
+
+    <footer class="footer">
+      <p>
+        Why don't you take a look at the <a class="link" href="https://github.com/mauriciosoares/pin.js">Repository</a> for this project?
+      </p>
+      <p>
+        Maybe give your thoughts to the <a class="link" href="http://twitter.com/omauriciosoares">Developer</a> as well, it would be great!
+      </p>
+      <p>
+        Spread the word! <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mauriciosoares.co/pin.js/" data-via="omauriciosoares" data-hashtags="js">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      </p>
+    </footer>
   </div>
 
   <script src="prism.js"></script>

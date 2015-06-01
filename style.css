@@ -11,6 +11,10 @@ h1, h2, h3, a, .pinjs {
   font-family: "Cookie";
 }
 
+pre {
+  font-size: 14px;
+}
+
 h2 {
   border-bottom: 1px solid;
   line-height: 80%;
@@ -24,6 +28,12 @@ h2 .pinjs {
 
 a {
   text-decoration: none;
+}
+
+.w600 {
+  width: 600px;
+  margin: auto;
+  text-align: left;
 }
 
 .pinjs, .link {
@@ -94,9 +104,22 @@ h3 {
   border: none;
 }
 
+.config-item {
+  border-top: 1px solid #CFBC81;
+  line-height: 1.8;
+  margin-top: 34px;
+  padding-top: 20px;
+}
+
+.config-item:first-child {
+  border: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+
 .custom-header {
   padding: 10px;
-  transition: .2s;
+  transition: background-color .2s, color .2s;
   border-bottom: 1px solid rgb(181, 168, 127);
   text-align: left;
   font-family: Cookie;
@@ -115,4 +138,8 @@ h3 {
 
 .custom-example {
   height: 1000px;
+}
+
+.footer {
+  margin-top: 60px;
 }
