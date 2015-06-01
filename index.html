@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <title>Pin.js</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <meta property="og:type" content="og:site">
+  <meta property="og:title" content="Loja de Artigos Esportivos Online | Netshoes">
+  <meta property="og:image" content="http://www.netshoes.com.br/assets/img/logo_ns.png">
+  <meta property="og:description" content="Netshoes - sua loja de tênis, chuteiras, camisas de futebol e artigos esportivos masculinos e femininos para todos esportes, da nike, puma, adidas e muito mais. Clique e confira!">
+  <meta property="og:url" content="http://www.netshoes.com.br/">
 
   <link href='http://fonts.googleapis.com/css?family=Lato:300|Cookie' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
@@ -11,6 +16,15 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=105364026232098";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
   <a href="https://github.com/mauriciosoares/pin.js"><img style="z-index: 10; position: fixed; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
 
   <div class="container">
@@ -208,6 +222,20 @@ new Pin(document.getElementById('pin'));
       </p>
     </div>
 
+    <div>
+      <p>
+        These are just cool examples, it's up to you to create amazing stuff with this guy.
+      </p>
+
+      <p>
+        Have I told you that this is mobile compatible? It works smoothly on Safari for IOS and Chrome for Android.<br>
+      </p>
+
+      <p>
+        (Protip: That means you can use it on your native app developed with <b>HTML + CSS + Javascript</b>)
+      </p>
+    </div>
+
     <h2 id="settings">
       <a href="#settings">Settings</a>
     </h2>
@@ -299,10 +327,33 @@ pin.reload();
       <p>
         Maybe give your thoughts to the <a class="link" href="http://twitter.com/omauriciosoares">Developer</a> as well, it would be great!
       </p>
-      <p>
-        Spread the word! <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mauriciosoares.co/pin.js/" data-via="omauriciosoares" data-hashtags="js">Tweet</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-      </p>
+      <div>
+        Spread the word!
+        <div class="social-link is-twitter">
+          <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mauriciosoares.co/pin.js/" data-via="omauriciosoares" data-hashtags="js">Tweet</a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </div>
+
+        <div class="social-link is-facebook">
+          <div class="fb-like" data-href="http://mauriciosoares.co/pin.js" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+        </div>
+      </div>
+
+      <div class="disqus">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            var disqus_shortname = 'pinjs';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+      </div>
     </footer>
   </div>
 

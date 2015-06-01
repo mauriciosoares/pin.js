@@ -137,9 +137,24 @@ h3 {
 }
 
 .custom-example {
-  height: 1000px;
+  height: 700px;
 }
 
 .footer {
+  margin-top: 60px;
+}
+
+
+.social-link {
+  display: inline-block;
+  position: relative;
+  margin-left: 10px;
+}
+
+.social-link.is-twitter {
+  top: 4px;
+}
+
+.disqus {
   margin-top: 60px;
 }
