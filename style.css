@@ -1,18 +1,17 @@
 body {
-  background: rgb(30, 30, 61);
-  color: white;
+  background: #D9CB9E;
+  color: #1E1E20;
   font-size: 18px;
-  font-family: Verdana;
-  line-height: 1.6;
+  font-family: "Lato","Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
 }
 
-hr {
-  border-color: rgb(39, 39, 103);
+h1, h2, h3, a, .pinjs {
+  color: #DC3522;
+  font-family: "Cookie";
 }
 
-h2, a {
-  color: rgb(200, 200, 19);
-  text-shadow: 4px 4px 0px black;
+.pinjs, .link {
+  font-size: 160%;
 }
 
 a {
@@ -24,8 +23,22 @@ a:hover {
   opacity: .8;
 }
 
-p, h2 {
+h1, h2, h3, p {
   text-align: center;
+}
+
+h1 {
+  font-size: 500%;
+  margin: 10px 0;
+  text-shadow: 1px 1px 1px rgb(53, 49, 37);
+}
+
+h2 {
+  font-size: 250%;
+}
+
+h3 {
+  font-size: 150%;
 }
 
 .container {
@@ -33,62 +46,6 @@ p, h2 {
   margin: auto;
 }
 
-.quote {
-  padding-top: 50px;
-  position: relative;
-  width: 300px;
-}
-
-.quote-note {
-  color: #333;
-  position: relative;
-  margin: 0 auto;
-  padding: 20px;
-  font-family: Satisfy;
-  font-size: 30px;
-  box-shadow: 0 10px 10px 2px rgba(0,0,0,0.3);
-  text-align: center;
-}
-
-.quote-note.is-yellow {
-  background: rgb(200, 200, 19);
-  -webkit-transform: rotate(-5deg);
-  -moz-transform: rotate(-5deg);
-  -o-transform: rotate(-5deg);
-  -ms-transform: rotate(-5deg);
-  transform: rotate(-5deg);
-}
-
-.quote-pin {
-  background-color: #aaa;
-  display: block;
-  height: 32px;
-  width: 2px;
-  position: absolute;
-  left: 50%;
-  top: -30px;
-  opacity: 0;
-  z-index: 1;
-  transition: 0.2s;
-
-}
-
-.quote.is-pinned .quote-pin {
-  top: 36px;
-  opacity: 1;
-}
-
-.quote-pin:after {
-  background-color: #A31;
-  background-image: radial-gradient(25% 25%, circle, hsla(0,0%,100%,.3), hsla(0,0%,0%,.3));
-  border-radius: 50%;
-  content: '';
-  height: 12px;
-  left: -5px;
-  position: absolute;
-  top: -10px;
-  width: 12px;
-}
 
 .ioslist {
   background: white;
@@ -102,13 +59,12 @@ p, h2 {
 }
 
 .ioslist-item {
-  font-weight: bold;
   padding: 10px;
   border-top: 1px solid rgb(215, 215, 215);
-  font-family: arial;
 }
 
 .ioslist-item.is-title {
+  font-weight: bold;
   border: none;
   background-color: rgb(215, 215, 215);
 }
