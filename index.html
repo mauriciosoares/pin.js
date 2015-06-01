@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>Pin.js</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 
   <link href='http://fonts.googleapis.com/css?family=Lato:300|Cookie' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
@@ -10,7 +11,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <a href="https://github.com/mauriciosoares/pin.js"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+  <a href="https://github.com/mauriciosoares/pin.js"><img style="z-index: 10; position: fixed; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
 
   <div class="container">
     <header class="header">
@@ -36,23 +37,44 @@ bower install pin.js
     </p>
 
 
-    <h2 id="Usage">
-      <a href="#Usage">Usage</a>
-    </h2>
-
-<pre><code class="language-javascript">
-function teste() {
-
-}
-</code></pre>
-
-
-    <h2>
-      Take a look at a few things you can do with Pin.js
+    <h2 id="getting-started">
+      <a href="#getting-started">Getting Started</a>
     </h2>
 
     <h3>
-      The Iphone contacts list (Ohhhh).
+      Set your HTML markup.
+    </h3>
+
+<pre><code class="language-markup">
+&lt;div id="pin">&lt;/div>
+</code></pre>
+
+    <h3>
+      Pin your element!
+    </h3>
+
+<pre><code class="language-javascript">
+new Pin('#pin');
+
+// You can use a DOM reference as well
+new Pin(document.getElementById('pin'));
+</code></pre>
+
+    <h3>
+      You can also set the pinned element on the markup
+    </h3>
+
+<pre><code class="language-markup">
+&lt;div data-pin>&lt;/div>
+</code></pre>
+
+
+    <h2 id="things-to-do">
+      <a href="#things-to-do">Cool things you can do with <span class="pinjs">Pin.js</span></a>
+    </h2>
+
+    <h3 class="example-title">
+      The Iphone contacts list.
     </h3>
     <div class="ioslist">
       <ul>
@@ -174,73 +196,44 @@ function teste() {
       </ul>
     </div>
 
-    <h3>
-      A nice sidebar for your website.
+    <h3 class="example-title">
+      A fixed header for your website.
     </h3>
-    <div class="sidebar-container">
-      <div class="sidebar" data-pin>
-        <div class="sidebar-title">
-          Nice Sidebar
-        </div>
-        <ul>
-          <li>This may be a cool link</li>
-          <li>Another one</li>
-          <li>:D</li>
-        </ul>
+    <div class="custom-example">
+      <div class="custom-header" id="custom-header">
+        <span>Awesome Logo</span>
       </div>
-      <div class="sidebar-holder">
-        <p>
-          These are just cool examples,<br>it's up to you to create amazing stuff with this guy.
-        </p>
-
-        <p>
-          Have I told you that this is mobile compatible?<br>It works smoothly on Safari for IOS and Chrome for Android.<br>
-        </p>
-
-        <p>
-          (Protip: That means you can use it on your native app developed with <b>HTML + CSS + Javascript</b>)
-        </p>
-
-        <p class="sidebar-keepscrolling">
-          Keep Scrolling...
-        </p>
-        <p class="sidebar-keepscrolling">
-          Keep Scrolling...
-        </p>
-        <p class="sidebar-keepscrolling">
-          Keep Scrolling...
-        </p>
-        <p class="sidebar-keepscrolling">
-          Keep Scrolling...
-        </p>
-        <p class="sidebar-keepscrolling">
-          Keep Scrolling...
-        </p>
-      </div>
+      <p>
+        Cool Content
+      </p>
     </div>
 
+    <h2 id="settings">
+      <a href="#settings">Settings</a>
+    </h2>
+
+
     <p>
-      You scrooled to the bottom :)
+      Why don't you take a look at the <a class="link" href="https://github.com/mauriciosoares/pin.js">Repository</a> for this project?
     </p>
     <p>
-      Why don't you take a look at the <a href="#">repository</a> for this project?
-    </p>
-    <p>
-      Maybe give your thoughts to the <a href="#">developer</a> as well, it would be great!
+      Maybe give your thoughts to the <a class="link" href="http://twitter.com/omauriciosoares">Developer</a> as well, it would be great!
     </p>
   </div>
 
   <script src="prism.js"></script>
   <script src="pin.js"></script>
   <script>
-    // new Pin('#pin', {
-    //   onPin: function(pin) {
-    //     pin.el.classList.add('is-pinned');
-    //   },
-    //   onUnpin: function(pin) {
-    //     pin.el.classList.remove('is-pinned');
-    //   }
-    // });
+  document.addEventListener('DOMContentLoaded', function() {
+    new Pin('#custom-header', {
+      onPin: function(pin) {
+        pin.el.classList.add('is-pinned');
+      },
+      onUnpin: function(pin) {
+        pin.el.classList.remove('is-pinned');
+      }
+    });
+  });
   </script>
 </body>
 </html>

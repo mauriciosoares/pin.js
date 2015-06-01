@@ -3,6 +3,7 @@ body {
   color: #1E1E20;
   font-size: 18px;
   font-family: "Lato","Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
+  text-align: center;
 }
 
 h1, h2, h3, a, .pinjs {
@@ -10,21 +11,39 @@ h1, h2, h3, a, .pinjs {
   font-family: "Cookie";
 }
 
-.pinjs, .link {
-  font-size: 160%;
+h2 {
+  border-bottom: 1px solid;
+  line-height: 80%;
+  display: inline-block;
+  margin: 20px 0;
+}
+
+h2 .pinjs {
+  font-size: 100%;
 }
 
 a {
   text-decoration: none;
+}
+
+.pinjs, .link {
+  font-size: 160%;
+}
+
+.pinjs {
+  text-shadow: .5px .5px 0px rgb(53, 49, 37);
+}
+
+.link {
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  line-height: 80%;
+  display: inline-block;
   transition: .2s;
 }
 
-a:hover {
-  opacity: .8;
-}
-
-h1, h2, h3, p {
-  text-align: center;
+.link:hover {
+  border-bottom: 1px solid;
 }
 
 h1 {
@@ -38,7 +57,8 @@ h2 {
 }
 
 h3 {
-  font-size: 150%;
+  font-size: 100%;
+  font-family: "Lato";
 }
 
 .container {
@@ -50,6 +70,7 @@ h3 {
 .ioslist {
   background: white;
   color: black;
+  text-align: left;
 }
 
 .ioslist ul {
@@ -73,27 +94,25 @@ h3 {
   border: none;
 }
 
-.sidebar-container {
-  position: relative;
-  overflow: hidden;
+.custom-header {
+  padding: 10px;
+  transition: .2s;
+  border-bottom: 1px solid rgb(181, 168, 127);
+  text-align: left;
+  font-family: Cookie;
+  font-size: 200%;
+  color: rgb(220, 53, 34);
 }
 
-.sidebar-holder {
-  float: left;
-  width: 660px;
+.custom-header.is-pinned {
+  background-color: #DC3522;
+  color: white;
 }
 
-.sidebar {
-  float: left;
-  margin-right: 40px;
-  padding-top: 18px;
+.example-title {
+  margin-top: 30px;
 }
 
-.sidebar-title {
-  font-size: 22px;
-  font-weight: bold;
-}
-
-.sidebar-keepscrolling {
-  margin: 250px 0;
+.custom-example {
+  height: 1000px;
 }
