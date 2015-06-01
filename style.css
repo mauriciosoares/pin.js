@@ -40,6 +40,10 @@ a {
   font-size: 160%;
 }
 
+.link .pinjs {
+  font-size: 100%;
+}
+
 .pinjs {
   text-shadow: .5px .5px 0px rgb(53, 49, 37);
 }
