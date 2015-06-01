@@ -121,6 +121,7 @@ new Pin('#pin', {
 
 ### reload
 Whenever you change the size of the pinned element, you should trigger this method to recalculate the positions of the element.
+
 __Usage__
 ```js
 var pin = new Pin('#pin');
