@@ -162,3 +162,5 @@ Please respect the indentation rules and code style.
 ## License
 
 Pin.js is released under the MIT License. See [LICENSE](https://github.com/mauriciosoares/pin.js/blob/master/LICENSE) file for details.
+
+Testing Code Spaces from github :)
